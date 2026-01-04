@@ -1,0 +1,20 @@
+
+
+.nav-active{
+    color: #23BE0A;
+    border: 1px solid #23BE0A;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 17px;
+    padding-right: 17px;
+    border-radius: 8px;
+}
+.nav-inactive{
+    color: #131313CC;
+    border: 0;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 17px;
+    padding-right: 17px;
+
+}
