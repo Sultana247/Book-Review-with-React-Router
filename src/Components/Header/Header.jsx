@@ -6,7 +6,7 @@ import './Header.css';
 const Header = () => {
     
     return (
-        <div>
+        <div className=' work-sans-font'>
             <div className="navbar  ">
                 <div className="navbar-start">
                     <div className="dropdown">
