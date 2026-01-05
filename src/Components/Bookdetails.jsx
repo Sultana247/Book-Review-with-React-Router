@@ -15,7 +15,7 @@ const Bookdetails = () => {
                     src={image}
                     alt="Shoes" />
                 </figure>
-                </div>
+            </div>
             <div className='mx-auto'>
                  <h3 className='playfair-display-font font-bold text-2xl md:text-[40px] mb-4'>{bookName}</h3>
                  <p className='work-sans-font font-medium text-[16px] text-[#131313CC] '>By: {author}</p>
@@ -51,7 +51,11 @@ const Bookdetails = () => {
                     <p className='text-[#131313B3] '>Rating: </p>
                     <p className='font-bold'>{rating}</p>
                  </div>
-                
+                 {/* buttons */}
+                 <div className='flex gap-6 mt-8'>
+                    <button className='border border-[#1313134D]  py-2 px-6 rounded-lg font-medium work-sans-font text-[16px]'>Read</button>
+                    <button className=' bg-[#50B1C9] text-white py-2 px-6 rounded-lg font-medium work-sans-font text-[16px] ml-4'>Whishlist</button>
+                 </div>
             </div>
         </div>
     );
