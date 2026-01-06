@@ -31,8 +31,8 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end gap-4">
-                    <a className="rounded-lg bg-[#23BE0A] py-2 px-3 md:py-3 md:px-6 text-white">Sign in</a>
-                    <a className="rounded-lg bg-[#59C6D2] py-2 px-3 md:py-3 md:px-6 text-white">Sign up</a>
+                    <button className="rounded-lg bg-[#23BE0A] py-2 px-3 md:py-3 md:px-6 text-white">Sign in</button>
+                    <button className="rounded-lg bg-[#59C6D2] py-2 px-3 md:py-3 md:px-6 text-white">Sign up</button>
                 </div>
             </div>
         </div>
