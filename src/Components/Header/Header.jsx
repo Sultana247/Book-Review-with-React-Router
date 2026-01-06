@@ -21,7 +21,7 @@ const Header = () => {
                         <NavLink to="/pages-to-read"   className=''>Pages to Read</NavLink>
                     </ul>
                     </div>
-                    <a className="text-xl md:text-[28px] font-bold">Book Vibe</a>
+                    <a className="text-xl md:text-[28px] font-bold">Bookish Bliss</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 flex gap-4">

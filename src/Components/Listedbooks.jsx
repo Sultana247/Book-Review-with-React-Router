@@ -27,9 +27,9 @@ useState(()=>{
     getBooks('read-list');
 },[]);
     return (
-        <div>
+        <div className='mx-auto'>
             {/* banner of listed books page */}
-            <div className="flex p-8 justify-center items-center bg-[#1313130D] mt-9.5 mb-9 rounded-2xl playfair-display-font">
+            <div className="flex p-5 md:p-8 justify-center items-center bg-[#1313130D] mt-9.5 mb-9 rounded-2xl playfair-display-font ">
                     <h3 className='work-sans-font font-bold text-[28px]'>Books</h3>
             </div>
             {/* sort by button */}
@@ -47,7 +47,7 @@ useState(()=>{
             </div>
 
             {/* tabs of listed and wishlisted books */}
-            <div role="tablist" className="tabs tabs-lift mt-14 mb-8 mx-auto">
+            <div role="tablist" className="tabs tabs-lift mt-14 mb-8">
                 <Link role="tab" onClick={()=>getBooks('read-list')} className="tab tab-active">Read Books</Link>
                 <Link role="tab" onClick={()=>getBooks('whishlist')} className="tab">Wishlist Books</Link>
                 <Link role="tab"  className="tab"></Link>
