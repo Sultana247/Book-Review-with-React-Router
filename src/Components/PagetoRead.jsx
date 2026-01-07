@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router';
 import { getLocalStorageData } from '../Utility/handleLocalstorage';
 
 import { RechartsDevtools } from '@recharts/devtools';
-import CustomBarChart from './CustomBarChart';
+
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid} from 'recharts';
 const PagetoRead = () => {
     const books = useLoaderData();

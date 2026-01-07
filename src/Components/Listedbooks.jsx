@@ -9,6 +9,20 @@ const Listedbooks = () => {
     const books= useLoaderData();
     const [displaybooks, setDisplaybooks]=useState([])
     
+    const handleSort=(sortbasedon)=>{
+        if(sortbasedon==='rating'){
+            const sortedBooks = [...displaybooks].sort((a, b) => b.rating - a.rating);
+            setDisplaybooks(sortedBooks);
+        }
+        else if(sortbasedon==='pages'){
+            const sortedBooks = [...displaybooks].sort((a, b) => b.totalPages - a.totalPages);
+            setDisplaybooks(sortedBooks);
+        }
+        else if(sortbasedon==='year'){
+            const sortedBooks = [...displaybooks].sort((a, b) => b.publicationYear - a.publicationYear);
+            setDisplaybooks(sortedBooks);
+        }
+    }
     const getBooks=(container)=>{
         const getbooksid = getLocalStorageData(container);
         console.log(getbooksid);
@@ -37,9 +51,9 @@ useState(()=>{
                 <details className="dropdown ">
                     <summary className="btn m-1  rounded-lg bg-[#23BE0A] py-2 px-3 md:py-3 md:px-6 text-white flex items-center text-lg font-semibold work-sans-font gap-3">Sort by <MdOutlineKeyboardArrowDown /></summary>
                     <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                        <li><button ><a>Rating</a></button></li>
-                        <li><button><a>Number of pages</a></button></li>
-                        <li><button><a>Publication year</a></button></li>
+                        <li><button onClick={()=>handleSort('rating')}><a>Rating</a></button></li>
+                        <li><button onClick={()=>handleSort('pages')}><a>Number of pages</a></button></li>
+                        <li><button onClick={()=>handleSort('year')}><a>Publication year</a></button></li>
                         
                     </ul>
                 </details>
