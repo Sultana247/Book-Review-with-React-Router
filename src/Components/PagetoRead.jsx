@@ -4,21 +4,25 @@ import { getLocalStorageData } from '../Utility/handleLocalstorage';
 
 import { RechartsDevtools } from '@recharts/devtools';
 import CustomBarChart from './CustomBarChart';
-import { BarChart, Bar, Cell, XAxis, YAxis} from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid} from 'recharts';
 const PagetoRead = () => {
     const books = useLoaderData();
     const [drawchart, setDrawchart] = useState([]);
 
-const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
+    const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
 
-  const SvgTriangle = ({ width = 100, height = 100, color = "#007bff" }) => {
-  // Define the three points of the triangle (x1,y1 x2,y2 x3,y3)
-  // Example for an upward-pointing isosceles triangle:
-  const points = `${width / 2},0 0,${height} ${width},${height}`;
-    return <svg width={width} height={height}>
-        <polygon points={points} fill={color} />
-    </svg>;
-  };
+    const getPath = (x, y, width, height) => {
+    return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}
+    ${x + width / 2}, ${y}
+    C${x + width / 2},${y + height / 3} ${x + (2 * width) / 3},${y + height} ${x + width}, ${y + height}
+    Z`;
+    };
+
+    const TriangleBar = (BarProps) => {
+    const { fill, x, y, width, height } = BarProps;
+
+    return <path d={getPath(Number(x), Number(y), Number(width), Number(height))} stroke="none" fill={fill} />;
+    };
 
     useEffect(()=>{
         const getbooksid = getLocalStorageData('read-list');
@@ -40,20 +44,29 @@ const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
             <div className="flex p-5 md:p-8 justify-center items-center bg-[#1313130D]  mt-9.5 mb-9 rounded-2xl playfair-display-font ">
                     {/* customize bar charts */}
                
-                    <BarChart
-                        style={{ width: '100%', maxWidth: '300px', maxHeight: '100px', aspectRatio: 1.618 }}
+                  <div className='w-full flex justify-center items-center p-5'>
+                      <BarChart
+                        style={{ width: '100%', maxWidth: '500px', maxHeight: '500px', aspectRatio: 1.618 }}
                         responsive
                         data={drawchart}
                     >
-                        <XAxis dataKey="bookName" />
-                        <YAxis width="auto" />
-                        <Bar dataKey="totalPages" fill="#8884d8" shape={} label={{ position: 'top' }}>
+                        <CartesianGrid strokeDasharray="5 5" />
+                        <XAxis
+                            dataKey="bookName"
+                            interval={0}
+                            tick={{ fontSize: 8 }}
+                            angle={-7}
+                            textAnchor="end"
+                        />
+                        <YAxis className='text-[10px]' width="auto" />
+                        <Bar dataKey="totalPages" fill="#8884d8" shape={TriangleBar} label={{ position: 'top' }}>
                             {drawchart.map((_entry, index) => (
                             <Cell key={`cell-${index}`} fill={colors[index % 20]} />
                             ))}
                         </Bar>
                         <RechartsDevtools />
                     </BarChart>
+                  </div>
                
 
             </div>
